@@ -1,0 +1,13 @@
+<h1>Add new book</h1>
+
+<%= form_tag :action => 'create' do %>
+<p><label for = "books_name">Name</label>:
+<%= text_field 'books', 'name' %></p>
+
+<p><label for = 'books_author'>Author</label>:
+<%= text_field 'books', 'author' %></p>
+
+<%= submit_tag "Create" %>
+
+<% end -%>
+<%= link_to 'Back', {:action => 'all'} %>
