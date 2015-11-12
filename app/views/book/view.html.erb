@@ -2,5 +2,26 @@
 <ul>
   <li>Name : <%=@book['name']%></li>
   <li>Author : <%=@book['author']%></li>
+  <li>Status : <%=@book['status']%></li>
+  <% if @book['status'] == 'Loaned' %>
+  <li>Loaned To : <%=@book['loan']['to']%> </li>
+  <li>Loaned On : <%=@book['loan']['on']%> </li>
+  <li>Due On : <%=@book['loan']['due']%> </li>
+  <% end %>
 </ul>
+<% if @book['status'] == 'Available' %>
+  <%= form_tag(controller: "book", action: "loan") do %>
+    <%= hidden_field_tag 'name', @book['name'] %>
+    <%= hidden_field_tag 'status', 'Loaned' %>
+    <%= label_tag(:loanee, 'Loan To') %>
+    <%= text_field_tag(:loanee)%>
+    <%= submit_tag("Loan") %>
+  <% end %>
+<% end %>
+<% if @book['status'] == 'Loaned' %>
+  <%= form_tag(controller: "book", action: "return") do %>
+    <%= hidden_field_tag 'name', @book['name'] %>
+    <%= submit_tag("Return this book!") %>
+  <% end %>
+<% end %>
 <p><%= link_to "Back", {:action => 'all' }%></p>

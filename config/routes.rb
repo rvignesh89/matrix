@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get 'book/new'
   post 'book/create'
   get 'book/:name' => 'book#view'
+  post 'book/loan'
+  post 'book/return'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
