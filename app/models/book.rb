@@ -7,7 +7,7 @@ class Book
   @@api_host = ENV['API_HOST']
   def self.all()
     puts @@api_url
-    return JSON.parse(Net::HTTP.get_response(URI(@@api_url)).body)["data"]
+    #return JSON.parse(Net::HTTP.get_response(URI(@@api_url)).body)["data"]
   end
   def self.new(book)
     req = Net::HTTP::Post.new('/book', initheader = {'Content-Type' =>'application/json'})
