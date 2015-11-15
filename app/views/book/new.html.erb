@@ -1,6 +1,9 @@
 <h1>Add new book</h1>
 
 <%= form_tag :action => 'create' do %>
+<p><label for = "books_code">Code</label>:
+<%= text_field 'books', 'code' %></p>
+
 <p><label for = "books_name">Name</label>:
 <%= text_field 'books', 'name' %></p>
 

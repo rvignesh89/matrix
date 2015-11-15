@@ -3,11 +3,20 @@
 <% else %>
 <p>These are the current books in our system</p>
 
-<ul id = "books">
-   <% @books.each do |c| %>
-   <li><%= link_to c['name'], {:action => 'view',:name => c['name']}  %></li>
-   <% end %>
-</ul>
+<table id = "books" border="1">
+  <thead>
+    <th>Code</th>
+    <th>Name</th>
+    <th>Status</th>
+  </thead>
+  <% @books.each do |c| %>
+    <tr>
+      <td><%= c['code'] %></td>
+      <td><%= link_to c['name'], {:action => 'view',:name => c['name']}  %></td>
+      <td><%= c['status'] %></td>
+    </tr>
+  <% end %>
+</table>
 
 <% end %>
 <p><%= link_to "Add new Book", {:action => 'new' }%></p>

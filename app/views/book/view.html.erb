@@ -1,12 +1,13 @@
 <h2>Details:</h2>
 <ul>
+  <li>Code : <%=@book['code']%></li>
   <li>Name : <%=@book['name']%></li>
   <li>Author : <%=@book['author']%></li>
   <li>Status : <%=@book['status']%></li>
   <% if @book['status'] == 'Loaned' %>
   <li>Loaned To : <%=@book['loan']['to']%> </li>
-  <li>Loaned On : <%=@book['loan']['on']%> </li>
-  <li>Due On : <%=@book['loan']['due']%> </li>
+  <li>Loaned On : <%=DateTime.parse(@book['loan']['on']).strftime('%D')%> </li>
+  <li>Due On : <%=DateTime.parse(@book['loan']['due']).strftime('%D')%> </li>
   <% end %>
 </ul>
 <% if @book['status'] == 'Available' %>

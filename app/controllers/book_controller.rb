@@ -6,14 +6,17 @@ class BookController < ApplicationController
     @books.sort! {|x,y| x['name'] <=> y['name']}
   end
   def create
-    Book.new({"name"=>params[:books][:name],"author"=>params[:books][:author]})
+    Book.new({
+      "code"=>params[:books][:code],
+      "name"=>params[:books][:name],
+      "author"=>params[:books][:author]
+      })
     redirect_to action: :all
   end
   def new
   end
   def view
       @book = Book.find(params[:name])
-      puts @book
   end
   def loan
       Book.update(params[:name],{"status"=>"Loaned","loan"=>{"to"=>params[:loanee],"on"=>DateTime.now.to_s,"due"=>(DateTime.now + 30).to_s}})
