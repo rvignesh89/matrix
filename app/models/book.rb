@@ -3,9 +3,9 @@ require 'rubygems'
 require 'json'
 
 class Book
-  @@api_url = ENV['API_URL'] + 'book/'
-  @@api_host = ENV['API_HOST']
-  @@api_port = ENV['API_PORT']
+  @@api_url = Rails.application.secrets.api_url + 'book/'
+  @@api_host = Rails.application.secrets.api_host
+  @@api_port = Rails.application.secrets.api_port
   def self.all()
     puts @@api_url
     return JSON.parse(Net::HTTP.get_response(URI(@@api_url)).body)["data"]

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'welcome#index'
+  root 'book#all'
   get 'book/' => 'book#all'
   get 'book/new'
   post 'book/create'
